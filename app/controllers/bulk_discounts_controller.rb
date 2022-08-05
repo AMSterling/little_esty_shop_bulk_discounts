@@ -9,7 +9,23 @@ class BulkDiscountsController < ApplicationController
     @bulk_discount = BulkDiscount.find(params[:id])
   end
 
+  def new
+  end
+
+  def create
+    bulk_discount = @merchant.bulk_discounts.create(bulk_discount_params)
+      if bulk_discount.save
+        redirect_to [@merchant, :bulk_discounts]
+      else
+        flash[:notice] = "Error"
+        render :new
+      end 
+  end
+
   private
+  def bulk_discount_params
+    params.permit(:percent_off, :thresholds, :status)
+  end
   def find_merchant
     @merchant = Merchant.find(params[:merchant_id])
   end

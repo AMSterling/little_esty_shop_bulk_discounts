@@ -1,0 +1,9 @@
+<%= form_with url: merchant_bulk_discounts_path(@merchant), method: :post, local: true do |f| %>
+  <%= f.label :percent_off %>
+  <%= f.number_field :percent_off, min: 0, step: 5, max: 100, required: true %><br/>
+  <%= f.label  :thresholds %>
+  <%= f.number_field :thresholds, min: 5, required: true %><br/>
+  <%= f.label :status %>
+  <%= f.select :status, options_for_select(['disabled', 'enabled']) %>
+  <%= f.submit 'Add' %>
+<% end %>

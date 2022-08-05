@@ -10,7 +10,7 @@ get '/', to: 'application#welcome'
     resources :items, except: [:destroy]
     resources :item_status, only: [:update]
     resources :invoices, only: [:index, :show, :update]
-    resources :bulk_discounts, only: [:index, :show]
+    resources :bulk_discounts, only: [:index, :show, :new, :create]
   end
 
   namespace :admin do

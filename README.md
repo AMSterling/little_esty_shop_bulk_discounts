@@ -10,7 +10,7 @@ rails import
 
 Merchant Bulk Discounts Index
 
-[ ]
+[X]
 As a merchant
 When I visit my merchant dashboard
 Then I see a link to view all my discounts
@@ -21,7 +21,7 @@ percentage discount and quantity thresholds
 And each bulk discount listed includes a link to its show page
 Merchant Bulk Discount Create
 
-[ ]
+[X]
 As a merchant
 When I visit my bulk discounts index
 Then I see a link to create a new discount

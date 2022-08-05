@@ -1,5 +1,7 @@
 <h1><%= @merchant.name %></h1>
 
+<%= link_to "Add Discount", new_merchant_bulk_discount_path(@merchant), method: :get %>
+
 <% @bulk_discounts.each do |discount| %>
   <div id="discount-<%= discount.id %>">
     <h3>Percentage: <%= number_to_percentage(discount.percent_off, :precision => 0) %></h3>
