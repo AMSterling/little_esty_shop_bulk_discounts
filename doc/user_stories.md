@@ -122,7 +122,7 @@ Merchant Items Grouped by Status
 
 As a merchant,
 When I visit my merchant items index page
-Then I see two sections, one for "Enabled Items" and one for "Disabled Items"
+Then I see two sections, one for "1 Items" and one for "Disabled Items"
 And I see that each Item is listed in the appropriate section
 ```
 
@@ -339,7 +339,7 @@ Admin Merchants Grouped by Status
 
 As an admin,
 When I visit the admin merchants index
-Then I see two sections, one for "Enabled Merchants" and one for "Disabled Merchants"
+Then I see two sections, one for "1 Merchants" and one for "Disabled Merchants"
 And I see that each Merchant is listed in the appropriate section
 ```
 
