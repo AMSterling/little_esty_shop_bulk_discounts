@@ -37,7 +37,7 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'launchy'
+  gem 'launchy' #save_and_open_page
   gem 'orderly'
   gem 'pry'
   gem 'rspec-rails', '~> 4.0.1'
