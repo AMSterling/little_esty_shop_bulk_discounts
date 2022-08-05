@@ -1,7 +1,7 @@
 <h1>Little Etsy Shop Merchants</h1>
 
-<% @merchants.each_with_index do |merchant, index|%>
-<div id="merchant-<%= index %>">
-  <h3><%= link_to "#{merchant.name}", merchant_dashboard_index_path %></h3>
+<% @merchants.each do |merchant|%>
+<div id="merchant-<%= merchant.id %>">
+  <h3><%= link_to "#{merchant.name}", merchant_dashboard_index_path(merchant) %></h3>
 </div>
 <% end %>

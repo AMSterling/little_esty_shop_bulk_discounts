@@ -5,6 +5,7 @@ describe Merchant do
     it { should validate_presence_of :name }
   end
   describe "relationships" do
+    it { should have_many :bulk_discounts }
     it { should have_many :items }
     it { should have_many(:invoice_items).through(:items) }
     it {should have_many(:invoices).through(:invoice_items)}
@@ -160,3 +161,5 @@ describe Merchant do
     end
   end
 end
+
+# bundle exec rspec spec/models/merchant_spec.rb
