@@ -6,6 +6,7 @@ RSpec.describe BulkDiscount, type: :model do
     it { should validate_presence_of :thresholds }
     it { should validate_numericality_of :thresholds }
     it { should validate_presence_of :merchant_id }
+    it { should define_enum_for(:status).with_values([:disabled, :enabled])}
   end
 
   describe 'relationships' do
