@@ -19,7 +19,7 @@ class BulkDiscountsController < ApplicationController
       else
         flash[:notice] = "Error"
         render :new
-      end 
+      end
   end
 
   private
