@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'merchant bulk discount index' do
-  it 'lists all discounts from the merchant' do
+RSpec.describe 'merchant bulk discount show page' do
+  it 'shows a merchants discount and its attributes' do
     merchant1 = Merchant.create!(name: 'Hair Care')
 
     customer_1 = Customer.create!(first_name: 'Joey', last_name: 'Smith')
@@ -44,18 +44,39 @@ RSpec.describe 'merchant bulk discount index' do
     discount2 = BulkDiscount.create!(percent_off: 15, thresholds: 20, merchant_id: merchant1.id)
     discount3 = BulkDiscount.create!(percent_off: 20, thresholds: 30, merchant_id: merchant1.id)
 
-    visit new_merchant_bulk_discount_path(merchant1)
+    visit merchant_bulk_discount_path(merchant1, discount1)
 
-    fill_in 'Percent off', with: 25
-    fill_in 'Thresholds', with: 40
-    select('enabled', from: :status)
-    click_on 'Add'
+    expect(current_path).to eq("/merchant/#{merchant1.id}/bulk_discounts/#{discount1.id}")
+    expect(page).to have_content('10% Discount')
+    expect(page).to have_content('Quantity Threshold: 15')
+    expect(page).to have_content('Status: disabled')
+    expect(page).to_not have_content('15% Discount')
+    expect(page).to_not have_content('Quantity Threshold: 20')
+    expect(page).to_not have_content('20% Discount')
+    expect(page).to_not have_content('Quantity Threshold: 30')
 
-    expect(current_path).to eq("/merchant/#{merchant1.id}/bulk_discounts")
-    expect(page).to have_content('Percentage: 25%')
-    expect(page).to have_content('Quantity Threshold: 40')
-    expect(page).to have_content('Status: enabled')
+    visit merchant_bulk_discount_path(merchant1, discount2)
+
+    expect(current_path).to eq("/merchant/#{merchant1.id}/bulk_discounts/#{discount2.id}")
+    expect(page).to have_content('15% Discount')
+    expect(page).to have_content('Quantity Threshold: 20')
+    expect(page).to have_content('Status: disabled')
+    expect(page).to_not have_content('10% Discount')
+    expect(page).to_not have_content('Quantity Threshold: 15')
+    expect(page).to_not have_content('20% Discount')
+    expect(page).to_not have_content('Quantity Threshold: 30')
+
+    visit merchant_bulk_discount_path(merchant1, discount3)
+
+    expect(current_path).to eq("/merchant/#{merchant1.id}/bulk_discounts/#{discount3.id}")
+    expect(page).to have_content('20% Discount')
+    expect(page).to have_content('Quantity Threshold: 30')
+    expect(page).to have_content('Status: disabled')
+    expect(page).to_not have_content('10% Discount')
+    expect(page).to_not have_content('Quantity Threshold: 15')
+    expect(page).to_not have_content('15% Discount')
+    expect(page).to_not have_content('Quantity Threshold: 20')
   end
 end
 
-# bundle exec rspec spec/features/bulk_discounts/new_spec.rb
+# bundle exec rspec spec/features/bulk_discounts/show_spec.rb
