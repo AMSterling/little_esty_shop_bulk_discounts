@@ -32,7 +32,7 @@ When I fill in the form with valid data
 Then I am redirected back to the bulk discount index
 And I see my new bulk discount listed
 
-[ ]
+[X]
 Merchant Bulk Discount Delete
 
 As a merchant
@@ -42,7 +42,7 @@ When I click this link
 Then I am redirected back to the bulk discounts index page
 And I no longer see the discount listed
 
-[ ]
+[X]
 Merchant Bulk Discount Show
 
 As a merchant

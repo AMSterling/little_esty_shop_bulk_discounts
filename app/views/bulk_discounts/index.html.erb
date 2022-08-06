@@ -7,9 +7,7 @@
     <h3>Percentage: <%= number_to_percentage(discount.percent_off, :precision => 0) %><%= button_to 'View Discount', merchant_bulk_discount_path(@merchant, discount), method: :get %></h3>
     <p>Quantity Threshold: <%= discount.thresholds %></p>
     <p>Status: <%= discount.status %></p>
-    <ul>
-      <li><%= link_to "Delete #{discount.percent_off}% Discount", merchant_bulk_discount_path(@merchant, discount), method: :get %></li>
-    </ul>
+      <%= button_to "Delete #{discount.percent_off}% Discount", merchant_bulk_discount_path(@merchant, discount), method: :delete, local: true %>
     <br/>
   </div>
 <% end %>

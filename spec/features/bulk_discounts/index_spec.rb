@@ -179,7 +179,7 @@ RSpec.describe 'merchant bulk discount index' do
     expect(current_path).to eq("/merchant/#{merchant1.id}/bulk_discounts/new")
   end
 
-  it 'has a link to delete the discount' do
+  it 'has a button to delete the discount' do
     merchant1 = Merchant.create!(name: 'Hair Care')
 
     customer_1 = Customer.create!(first_name: 'Joey', last_name: 'Smith')
@@ -226,24 +226,30 @@ RSpec.describe 'merchant bulk discount index' do
 
     within("#discount-#{discount1.id}") do
       expect(page).to have_content('Percentage: 10%')
-      expect(page).to have_link('Delete 10% Discount')
-      expect(page).to_not have_link('Delete 15% Discount')
-      expect(page).to_not have_link('Delete 20% Discount')
+      expect(page).to have_button('Delete 10% Discount')
+      expect(page).to_not have_button('Delete 15% Discount')
+      expect(page).to_not have_button('Delete 20% Discount')
     end
 
     within("#discount-#{discount2.id}") do
       expect(page).to have_content('Percentage: 15%')
-      expect(page).to have_link('Delete 15% Discount')
-      expect(page).to_not have_link('Delete 10% Discount')
-      expect(page).to_not have_link('Delete 20% Discount')
+      expect(page).to have_button('Delete 15% Discount')
+      expect(page).to_not have_button('Delete 10% Discount')
+      expect(page).to_not have_button('Delete 20% Discount')
     end
 
     within("#discount-#{discount3.id}") do
       expect(page).to have_content('Percentage: 20%')
-      expect(page).to have_link('Delete 20% Discount')
-      expect(page).to_not have_link('Delete 10% Discount')
-      expect(page).to_not have_link('Delete 15% Discount')
+      expect(page).to have_button('Delete 20% Discount')
+      expect(page).to_not have_button('Delete 10% Discount')
+      expect(page).to_not have_button('Delete 15% Discount')
     end
+
+    click_button('Delete 10% Discount')
+    expect(current_path).to eq("/merchant/#{merchant1.id}/bulk_discounts")
+    expect(page).to_not have_content('Percentage: 10%')
+    expect(page).to have_content('Percentage: 15%')
+    expect(page).to have_content('Percentage: 20%')
   end
 end
 
