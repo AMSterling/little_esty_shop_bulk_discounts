@@ -33,7 +33,7 @@ class BulkDiscountsController < ApplicationController
       flash.notice = "Succesfully Updated Discount!"
       redirect_to [@merchant, discount]
     else
-      flash.notice = "All fields must be completed, get your act together."
+      flash.notice = "All fields must have a value, get your act together."
       redirect_to edit_merchant_item_path(@merchant, discount)
     end
   end

@@ -56,8 +56,8 @@ describe "merchant items index" do
     expect(page).to have_content(@item_3.name)
     expect(page).to have_content(@item_4.name)
 
-    expect(page).to have_no_content(@item_5.name)
-    expect(page).to have_no_content(@item_6.name)
+    expect(page).to_not have_content(@item_5.name)
+    expect(page).to_not have_content(@item_6.name)
   end
 
   it "has links to each item's show pages" do
@@ -132,7 +132,7 @@ describe "merchant items index" do
       expect(@item_3.name).to appear_before(@item_8.name)
       expect(@item_8.name).to appear_before(@item_4.name)
 
-      expect(page).to have_no_content(@item_7.name)
+      expect(page).to_not have_content(@item_7.name)
     end
   end
 
