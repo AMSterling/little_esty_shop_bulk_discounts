@@ -16,14 +16,14 @@ describe "merchant items show page" do
     expect(page).to have_content(@item_1.name)
     expect(page).to have_content(@item_1.description)
     expect(page).to have_content(@item_1.unit_price)
-    expect(page).to have_no_content(@item_2.name)
+    expect(page).to_not have_content(@item_2.name)
 
     visit merchant_item_path(@merchant1, @item_2)
 
     expect(page).to have_content(@item_2.name)
     expect(page).to have_content(@item_2.description)
     expect(page).to have_content(@item_2.unit_price)
-    expect(page).to have_no_content(@item_3.name)
+    expect(page).to_not have_content(@item_3.name)
   end
 
   it "has a link to update item info" do

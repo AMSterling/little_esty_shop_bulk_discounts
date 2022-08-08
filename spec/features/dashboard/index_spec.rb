@@ -208,8 +208,8 @@ RSpec.describe 'merchant dashboard' do
       expect(page).to have_content(customer_5.last_name)
       expect(page).to have_content(1)
     end
-    expect(page).to have_no_content(customer_6.first_name)
-    expect(page).to have_no_content(customer_6.last_name)
+    expect(page).to_not have_content(customer_6.first_name)
+    expect(page).to_not have_content(customer_6.last_name)
   end
 
   it "can see a section for Items Ready to Ship with list of names of items ordered and ids" do
@@ -261,8 +261,8 @@ RSpec.describe 'merchant dashboard' do
       expect(page).to have_content(item_2.name)
       expect(page).to have_content(item_2.invoice_ids)
 
-      expect(page).to have_no_content(item_3.name)
-      expect(page).to have_no_content(item_3.invoice_ids)
+      expect(page).to_not have_content(item_3.name)
+      expect(page).to_not have_content(item_3.invoice_ids)
     end
   end
 
@@ -311,7 +311,8 @@ RSpec.describe 'merchant dashboard' do
     expect(page).to have_link(item_2.invoice_ids)
     expect(page).to_not have_link(item_3.invoice_ids)
 
-    click_link("#{item_1.invoice_ids}", match: :first)
+    # click_link("#{item_1.invoice_ids}", match: :first)
+    click_link("#{item_1.invoice_ids}", :match => :first)
     expect(current_path).to eq("/merchant/#{merchant1.id}/invoices/#{invoice_1.id}")
   end
 

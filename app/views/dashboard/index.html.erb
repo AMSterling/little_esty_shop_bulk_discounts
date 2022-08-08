@@ -1,6 +1,7 @@
 <div class="nav-container">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <p class="navbar-text"><%= @merchant.name %></p>
+    <p><%= link_to "Home", "/" %></p>
+    <h1 class="navbar-text"><%= @merchant.name %></h1>
     <ul class="nav navbar-nav">
       <li><%= link_to 'My Dashboard', merchant_dashboard_index_path, class: 'link_1', style: 'pull-right' %>
       <li><%= link_to 'My Items', merchant_items_path, class: 'link_1', style: 'pull-right' %>
@@ -11,10 +12,8 @@
 </div>
 
 <body>
-  <div class="row">
-  </div>
 
-  <p class='mr-auto col-sm-5'>Favorite Customers</p>
+  <h2 class='mr-auto col-sm-5'>Favorite Customers</h2>
   <ul class='mr-auto col-sm-4'>
     <% @merchant.favorite_customers.each do |customer| %>
       <section id="customer-<%= customer.id %>">
@@ -24,7 +23,7 @@
     <% end %>
   </ul>
 
-  <p class='ml-auto col-sm-5'>Items Ready to Ship</p>
+  <h2 class='ml-auto col-sm-5'>Items Ready to Ship</h2>
   <ul class='ml-auto col-sm-4'>
     <section id = "items_ready_to_ship" >
       <p><% @merchant.ordered_items_to_ship.each do |item| %>
@@ -34,5 +33,4 @@
       </p>
     </section>
   </ul>
-
 </body>

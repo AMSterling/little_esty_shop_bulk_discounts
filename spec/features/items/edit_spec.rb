@@ -31,7 +31,7 @@ describe "merchant items edit page" do
     expect(page).to have_content("Bar Shampoo")
     expect(page).to have_content("Eco friendly shampoo")
     expect(page).to have_content("15")
-    expect(page).to have_no_content("This washes your hair")
+    expect(page).to_not have_content("This washes your hair")
     expect(page).to have_content("Succesfully Updated Item Info!")
   end
   it "shows a flash message if not all sections are filled in" do
@@ -42,7 +42,7 @@ describe "merchant items edit page" do
     fill_in "Unit price", with: "15"
 
     click_button "Submit"
-    
+
     expect(current_path).to eq(edit_merchant_item_path(@merchant1, @item_1))
     expect(page).to have_content("All fields must be completed, get your act together.")
   end
