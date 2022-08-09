@@ -69,7 +69,7 @@ RSpec.describe InvoiceItem, type: :model do
       expect(ii_3.eligible).to eq(discount2)
     end
 
-    it 'discounted_revenue' do
+    it 'revenue' do
       m1 = Merchant.create!(name: 'Merchant 1')
       c1 = Customer.create!(first_name: 'Bilbo', last_name: 'Baggins')
       c2 = Customer.create!(first_name: 'Frodo', last_name: 'Baggins')
