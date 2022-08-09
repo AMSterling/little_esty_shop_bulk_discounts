@@ -1,9 +1,11 @@
+<%= render partial: 'shared/merchant_links', locals: {path: "/merchant/#{@merchant.id}"} %>
+
 <%= form_with url: merchant_bulk_discount_path(@merchant, @bulk_discount), method: :patch, local: true do |f| %>
   <%= f.label :percent_off %>
-  <%= f.number_field :percent_off, min: 0, step: 5, max: 50, value: @bulk_discount.percent_off, required: true %><br/>
+  <%= f.number_field :percent_off, min: 0, step: 5, max: 50, value: @bulk_discount.percent_off, required: true %><br/><br/>
   <%= f.label :thresholds %>
-  <%= f.number_field :thresholds, min: 5, value: @bulk_discount.thresholds, required: true %><br/>
+  <%= f.number_field :thresholds, min: 5, value: @bulk_discount.thresholds, required: true %><br/><br/>
   <%= f.label :status %>
-  <%= f.select :status, options_for_select(['disabled', 'enabled']), :selected => params[:status] %>
+  <%= f.select :status, options_for_select(['disabled', 'enabled']), :selected => params[:status] %><br/><br/>
   <%= f.submit 'Update' %>
 <% end %>
