@@ -84,6 +84,8 @@ As an admin
 When I visit an admin invoice show page
 Then I see the total revenue from this invoice (not including discounts)
 And I see the total discounted revenue from this invoice which includes bulk discounts in the calculation
+
+[ ]
 As a merchant
 When I visit the discounts index page
 I see a section with a header of "Upcoming Holidays"
