@@ -62,7 +62,7 @@ When I change any/all of the information and click submit
 Then I am redirected to the bulk discount's show page
 And I see that the discount's attributes have been updated
 
-[ ]
+[X]
 Merchant Invoice Show Page: Total Revenue and Discounted Revenue
 
 As a merchant
@@ -70,7 +70,7 @@ When I visit my merchant invoice show page
 Then I see the total revenue for my merchant from this invoice (not including discounts)
 And I see the total discounted revenue for my merchant from this invoice which includes bulk discounts in the calculation
 
-[ ]
+[X]
 Merchant Invoice Show Page: Link to applied discounts
 
 As a merchant
