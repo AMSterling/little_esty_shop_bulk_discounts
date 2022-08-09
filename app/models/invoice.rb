@@ -14,10 +14,14 @@ class Invoice < ApplicationRecord
   def total_revenue
     invoice_items.sum do |invoice_item|
       invoice_item.revenue
-    end 
+    end
   end
 
   def total_before_discount
     invoice_items.sum("unit_price * quantity")
+  end
+
+  def total_savings
+    total_before_discount - total_revenue
   end
 end
