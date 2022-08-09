@@ -1,19 +1,19 @@
 <%= render partial: 'shared/admin_links', locals: {path: "/admin"} %>
 
 <body>
-  <div class="row">
-    <p class='ml-auto col-sm-5'>Top 5 Customers</p>
-    <p class='mr-auto col-sm-5'>Incomplete Invoices</p>
-      <ul class='ml-auto col-sm-4'>
-        <% @customers.each do |c| %>
-          <li><%= c.first_name + ' ' + c.last_name %> -
-          <%= c.number_of_transactions %> Purchases
-        <% end %>
-      </ul>
-      <ul class='mr-auto col-sm-4'>
-        <% @invoices.each do |i| %>
-          <li><%= link_to "Invoice # #{i.id}", admin_invoice_path(i.id) %></a> - <%= i.created_at.strftime("%A, %B %d, %Y") %>
-        <% end %>
-      </ul>
-  </div>
+
+  <h2 class='ml-auto col-sm-5'>Top 5 Customers</h2>
+    <ul class='ml-auto col-sm-4'>
+      <% @customers.each do |c| %>
+        <li><%= c.first_name + ' ' + c.last_name %> -
+        <%= c.number_of_transactions %> Purchases
+      <% end %>
+    </ul>
+
+  <h2 class='mr-auto col-sm-5'>Incomplete Invoices</h2>
+    <ul class='mr-auto col-sm-4'>
+      <% @invoices.each do |i| %>
+        <li><%= link_to "Invoice # #{i.id}", admin_invoice_path(i.id) %></a> - <%= i.created_at.strftime("%A, %B %d, %Y") %>
+      <% end %>
+    </ul>
 </body>

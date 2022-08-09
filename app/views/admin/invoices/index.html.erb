@@ -2,7 +2,7 @@
 
 <body>
   <div class="row">
-    <p class='col-12'>Invoices</p>
+    <h2 class='col-12'>Invoices</h2>
   </div>
   <% @invoices.each do |i| %>
     <li><%= link_to "Invoice ##{i.id}", admin_invoice_path(i) %></li>

@@ -4,8 +4,8 @@
 <body>
   <%= link_to 'Create Merchant', new_admin_merchant_path %>
   <div class="row">
-    <p class='mr-auto col-sm-5'>Top Merchants</p>
-    <p class='ml-auto col-sm-5'>1 Merchants</p>
+    <h2 class='mr-auto col-sm-5'>Top Merchants</h2>
+    <h2 class='ml-auto col-sm-5'>1 Merchants</h2>
   </div>
   <ul class='mr-auto col-sm-4'>
     <% @merchants.top_merchants.each do |m| %>
@@ -20,6 +20,9 @@
     <% end %>
   </ul>
 
+  <div class="row">
+    <h3 class='ml-auto col-sm-5'>Enabled Merchants</h3>
+  </div>
   <ul class='ml-auto col-sm-4'>
     <% @enabled_merchants.each do |m| %>
       <section id="merchant-<%= m.id %>">
@@ -30,7 +33,7 @@
   </ul>
 
   <div class="row">
-    <p class='ml-auto col-sm-5'>Disabled Merchants</p>
+    <h3 class='ml-auto col-sm-5'>Disabled Merchants</h3>
   </div>
   <ul class='ml-auto col-sm-4'>
       <% @disabled_merchants.each do |m| %>
@@ -38,6 +41,7 @@
         <li><%= link_to "#{m.name}", admin_merchant_path(m) %>
         <%= button_to 'Enable', admin_merchant_status_path(m), method: :patch, params: {status: 'enabled'} %>
       </section>
+      <br/>
     <% end %>
   </ul>
 </body>
