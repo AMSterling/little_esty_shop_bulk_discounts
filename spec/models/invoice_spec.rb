@@ -22,7 +22,7 @@ RSpec.describe Invoice, type: :model do
       ii_1 = InvoiceItem.create!(invoice_id: invoice_1.id, item_id: item_1.id, quantity: 9, unit_price: 10, status: 2)
       ii_11 = InvoiceItem.create!(invoice_id: invoice_1.id, item_id: item_8.id, quantity: 1, unit_price: 10, status: 1)
 
-      expect(invoice_1.total_before_discount).to eq(100)
+      expect(invoice_1.total_revenue).to eq(100)
     end
 
     it 'is the revenue after discounts' do
@@ -37,7 +37,7 @@ RSpec.describe Invoice, type: :model do
       discount2 = BulkDiscount.create!(percent_off: 15, thresholds: 20, merchant_id: merchant1.id, status: 1)
       discount3 = BulkDiscount.create!(percent_off: 20, thresholds: 30, merchant_id: merchant1.id, status: 1)
 
-      expect(invoice_1.total_revenue).to eq(163)
+      expect(invoice_1.discounted_revenue).to eq(163)
     end
 
     it 'total_savings' do
