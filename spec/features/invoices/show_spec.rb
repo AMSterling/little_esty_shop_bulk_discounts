@@ -446,7 +446,6 @@ RSpec.describe 'invoices show' do
     end
 
     click_link('15% Discount')
-    save_and_open_page
     expect(current_path).to eq("/merchant/#{merchant2.id}/bulk_discounts/#{discount6.id}")
   end
 end
