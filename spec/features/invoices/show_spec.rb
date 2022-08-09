@@ -298,7 +298,7 @@ RSpec.describe 'invoices show' do
      end
   end
 
-  it 'shows the total revenue for the merchant from the invoice' do
+  it 'shows the total discounted revenue for the merchant from the invoice' do
     merchant1 = Merchant.create!(name: 'Hair Care')
     merchant2 = Merchant.create!(name: 'Jewelry')
 
@@ -368,7 +368,7 @@ RSpec.describe 'invoices show' do
     expect(page).to have_content('Total Discounted Revenue: $1.0')
   end
 
-  it 'shows the total revenue for the merchant from the invoice' do
+  it 'shows the discount if eligible next to the item as a link' do
     merchant1 = Merchant.create!(name: 'Hair Care')
     merchant2 = Merchant.create!(name: 'Jewelry')
 
