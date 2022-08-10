@@ -17,9 +17,6 @@ class Invoice < ApplicationRecord
 
   def discounted_revenue
     total_revenue - total_savings
-    # invoice_items.sum do |invoice_item|
-    #   invoice_item.revenue
-    # end
   end
 
   def total_savings

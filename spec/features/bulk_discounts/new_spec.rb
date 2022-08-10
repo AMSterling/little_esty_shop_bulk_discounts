@@ -55,6 +55,14 @@ RSpec.describe 'merchant bulk discount index' do
     expect(page).to have_content('Percentage: 25%')
     expect(page).to have_content('Quantity Threshold: 40')
     expect(page).to have_content('Status: enabled')
+
+    visit new_merchant_bulk_discount_path(merchant1)
+
+    fill_in 'Thresholds', with: 40
+    select('enabled', from: :status)
+    click_on 'Add'
+
+    expect(page).to have_content('Error')
   end
 end
 

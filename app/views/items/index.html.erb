@@ -7,13 +7,26 @@
 
   <p><%= link_to "Create New Item", new_merchant_item_path(@merchant) %></p>
 
-  <div class="row">
+  <!-- <div class="row">
     <h3 class='mr-auto col-sm-5'>1 Items</h3>
-    <h3 class='ml-auto col-sm-5'>Top Items</h3>
-  </div>
+  </div> -->
 
   <div class="row">
-    <h3 class='mr-auto col-sm-5'>Active Merchants</h3>
+    <h3 class='ml-auto col-sm-5'>Top Items</h3>
+  </div>
+  <ul class='ml-auto col-sm-4'>
+  <section id="top_5">
+    <% @merchant.top_5_items.each do |item| %>
+      <li><%= link_to "#{item.name}", merchant_item_path(@merchant, item)  %> -
+        $<%= item.total_revenue %> in sales</li>
+      <p> Top selling date for <%= item.name %> was <%= item.best_day %> </p>
+    <% end %>
+    <br/>
+  </section>
+  </ul>
+
+  <div class="row">
+    <h3 class='mr-auto col-sm-5'>Active Items</h3>
   </div>
 
   <ul class='mr-auto col-sm-4'>
@@ -25,11 +38,11 @@
           <br/>
         </section>
       <% end %>
-    </section>
+    </section>    
   </ul>
 
   <div class="row">
-    <h3 class='mr-auto col-sm-5'>Disabled Merchants</h3>
+    <h3 class='mr-auto col-sm-5'>Disabled Items</h3>
   </div>
 
   <ul class='mr-auto col-sm-4'>
@@ -43,14 +56,4 @@
       <% end %>
     </section>
   </ul>
-
-  <ul class='ml-auto col-sm-4'>
-  <section id="top_5">
-    <% @merchant.top_5_items.each do |item| %>
-      <li><%= link_to "#{item.name}", merchant_item_path(@merchant, item)  %> -
-        $<%= item.total_revenue %> in sales</li>
-      <p> Top selling date for <%= item.name %> was <%= item.best_day %> </p>
-    <% end %>
-    <br/>
-  </section>
 </body>

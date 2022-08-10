@@ -21,14 +21,4 @@ class InvoiceItem < ApplicationRecord
   def eligible
     bulk_discounts.order(percent_off: :desc).where('thresholds <= ?', "#{self.quantity}").first
   end
-
-  def revenue
-    full_price = unit_price * quantity
-    if eligible.nil?
-      full_price
-    else
-      amount_off = full_price / eligible.percent_off
-      return full_price - amount_off
-    end
-  end
 end
