@@ -1,5 +1,15 @@
 <%= render partial: 'shared/merchant_links', locals: {path: "/merchant/#{@merchant.id}"} %>
 
+<section class="header"><center>
+  <h2>Upcoming Holidays</h2>
+  <% @holidays.each_with_index do |holiday, index| %>
+    <div id="holiday-<%= index %>">
+      <h4><%= holiday.name %> on <%= holiday.date %></h4>
+    </div>
+  <% end %>
+  </center>
+</section>
+
 <%= link_to "Add Discount", new_merchant_bulk_discount_path(@merchant), method: :get %>
 
 <% @bulk_discounts.each do |discount| %>
