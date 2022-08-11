@@ -85,7 +85,8 @@ describe 'Admin Invoices Index Page' do
     expect(page).to_not have_content(ii_3.status)
   end
 
-  it 'should display the total revenue the invoice will generate' do    m1 = Merchant.create!(name: 'Merchant 1')
+  it 'should display the total revenue the invoice will generate' do
+    m1 = Merchant.create!(name: 'Merchant 1')
 
     c1 = Customer.create!(first_name: 'Yo', last_name: 'Yoz', address: '123 Heyyo', city: 'Whoville', state: 'CO', zip: 12345)
     c2 = Customer.create!(first_name: 'Hey', last_name: 'Heyz')
